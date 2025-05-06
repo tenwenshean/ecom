@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // React Router hook for navigation
 import './LoginPage.css';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate(); // React Router hook for navigation
+
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,6 +24,7 @@ const LoginPage: React.FC = () => {
       const data = await response.json();
       if (response.ok) {
         setMessage(data.message);
+        navigate('/dashboard', {state: { email }}); // Redirect to the dashboard on successful login
       } else {
         setMessage(data.message);
       }

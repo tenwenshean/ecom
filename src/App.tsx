@@ -1,16 +1,16 @@
 import React from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import SidebarLeft from './components/SidebarLeft';
-import SidebarRight from './components/SidebarRight';
-import MainContent from './components/MainContent';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './components/LoginPage';
+import Dashboard from './components/Dashboard';
 
 const App: React.FC = () => {
   return (
-    <div>
-      <LoginPage />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 };
 
