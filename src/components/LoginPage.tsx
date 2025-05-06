@@ -48,7 +48,7 @@ const LoginPage: React.FC = () => {
           required
         />
         <button type="submit">Log In</button>
-        {message && <p>{message}</p>}
+        {message && <p className="message">{message}</p>}
       </form>
     </div>
   );

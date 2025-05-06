@@ -1,10 +1,13 @@
 import express from 'express';
 import fs from 'fs';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express();
 const PORT = 5000;
 
+
+app.use(cors());
 app.use(bodyParser.json());
 
 //root route
@@ -14,8 +17,6 @@ app.get('/', (req, res) => {
 
 // Endpoint to handle login
 app.post('/login', (req, res) => {
-
-
     const { email, password } = req.body;
 
     // Read the users.txt file
@@ -68,4 +69,6 @@ app.listen(PORT, () => {
 app.get('/dashboard', (req, res) => {
     res.send('Welcome to your dashboard!');
 });
+
+
 

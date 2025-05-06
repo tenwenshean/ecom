@@ -49,4 +49,9 @@
     background-color: #535bf2;
   }
 
-  
+  .message {
+    color: #000000; /* Set the text color to black */
+    font-size: 1em; /* Adjust the font size if needed */
+    margin-top: 10px; /* Add spacing above the message */
+    text-align: center; /* Optional: Center the message */
+  }
