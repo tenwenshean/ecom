@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './LoginPage.css';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -28,6 +29,9 @@ const LoginPage: React.FC = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        <a href="mailto:admin@example.com" className="contact-admin">
+          Contact Admin
+        </a>
         <button type="submit">Log In</button>
       </form>
     </div>
