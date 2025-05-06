@@ -4,11 +4,29 @@ import './LoginPage.css';
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Replace with real authentication logic
-    alert(`Logging in with\nEmail: ${email}\nPassword: ${password}`);
+
+    try {
+      const response = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setMessage(data.message);
+      } else {
+        setMessage(data.message);
+      }
+    } catch (error) {
+      setMessage('Error connecting to the server');
+    }
   };
 
   return (
@@ -29,10 +47,8 @@ const LoginPage: React.FC = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <a href="mailto:admin@example.com" className="contact-admin">
-          Contact Admin
-        </a>
         <button type="submit">Log In</button>
+        {message && <p>{message}</p>}
       </form>
     </div>
   );
