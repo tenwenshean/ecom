@@ -1,24 +1,55 @@
 .dashboard-container {
-    display: flex;
-    flex-direction: row; /* Change to row to allow horizontal alignment */
-    height: 100vh;
-    background-color: #f0f0f0;
-    color: #333;
-    padding: 10px; /* Optional: Add padding to the entire container */
+  display: flex;
+  flex-direction: row; /* Align sidebar and content horizontally */
+  height: 100vh; /* Full height of the viewport */
+  background-color: #f0f0f0; /* Let the background color take over */
+  color: #333;
+  margin: 0; /* Remove any extra margin */
+  padding: 0; /* Remove any extra padding */
+}
+  
+.sidebar {
+  width: 4%; /* Sidebar width */
+  height: calc(100% - 60px); /* Full height minus the top and bottom margin */
+  margin: 10px 0 20px 10px; /* Add a gap at the bottom (20px) */
+  background-color: #646cff; /* Sidebar background color */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the top */
+  border-top-left-radius: 8px; /* Rounded corners on the top-left */
+  border-bottom-left-radius: 8px; /* Rounded corners on the bottom-left */
+  padding: 20px 0; /* Add padding inside the sidebar */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+  
+  .sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 1.2em;
   }
   
-  .sidebar {
-    width: 5%; /* Adjust the width of the box */
-    height: calc(100% - 20px); /* Full height minus the top and bottom margin */
-    margin: 10px 0 10px 10px; /* Top, Right, Bottom, Left margin */
-    background-color: #646cff; /* Background color for the box */
-    color: white;
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
+    gap: 20px; /* Add spacing between icons */
+  }
+  
+  .sidebar ul li {
+    display: flex;
     align-items: center;
     justify-content: center;
-    border-top-left-radius: 8px; /* Optional: Add rounded corners */
-    border-bottom-left-radius: 8px; /* Optional: Add rounded corners */
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  .sidebar ul li:hover {
+    color: #ffffff; /* Change color on hover */
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+    transition: transform 0.2s ease-in-out;
   }
   
   .dashboard-content {
@@ -27,7 +58,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 10px; /* Add margin around the content */
   }
   
   .dashboard-container h1 {
