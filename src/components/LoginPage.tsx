@@ -34,12 +34,28 @@ const LoginPage: React.FC = () => {
   };
 
   useEffect(() => {
+    // Prevent caching of the page
+    const preventBackNavigation = () => {
+      window.history.pushState(null, '', window.location.href);
+      window.onpopstate = () => {
+        window.history.pushState(null, '', window.location.href);
+      };
+    };
+
+    preventBackNavigation();
+
+    return () => {
+      window.onpopstate = null; // Clean up the event listener
+    };
+  }, []);
+
+  useEffect(() => {
     const handleNavigation = () => {
       const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
       if (isLoggedIn) {
         localStorage.removeItem('isLoggedIn'); // Clear login state
         alert('You have been logged out due to navigation or refresh.');
-        navigate('/'); // Redirect to the login page
+        navigate('/', { replace: true }); // Redirect to the login page and replace history
       }
     };
 
