@@ -21,6 +21,14 @@ const Dashboard: React.FC = () => {
     navigate('/dashboard'); // Redirect to the dashboard page
   };
 
+  const goToProfile = () => {
+    navigate('/profile'); // Redirect to the profile page
+  };
+
+  const goToSettings = () => {
+    navigate('/settings'); // Redirect to the settings page
+  };
+
   return (
     <div className="dashboard-container">
       <div className="sidebar">
@@ -29,10 +37,10 @@ const Dashboard: React.FC = () => {
           <li onClick={goToDashboard} style={{ cursor: 'pointer' }}>
             <FaHome size={24} /> {/* Home Icon */}
           </li>
-          <li>
+          <li onClick={goToProfile} style={{ cursor: 'pointer' }}>
             <FaUser size={24} /> {/* Profile Icon */}
           </li>
-          <li>
+          <li onClick={goToSettings} style={{ cursor: 'pointer' }}>
             <FaCog size={24} /> {/* Settings Icon */}
           </li>
           <li onClick={goToProducts} style={{ cursor: 'pointer' }}>
