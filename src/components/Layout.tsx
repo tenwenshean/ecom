@@ -16,12 +16,15 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     navigate('/products'); // Redirect to the products page
   };
 
+  const goToDashboard = () => {
+    navigate('/dashboard'); // Redirect to the dashboard page
+  };
   return (
     <div className="dashboard-container">
       <div className="sidebar">
         <h2>Menu</h2>
         <ul>
-          <li>
+          <li onClick={goToDashboard} style={{ cursor: 'pointer' }}>
             <FaHome size={24} /> {/* Home Icon */}
           </li>
           <li>
