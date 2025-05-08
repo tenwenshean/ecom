@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'; // Added useState import
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaHome, FaUser, FaCog, FaSignOutAlt, FaBox } from 'react-icons/fa'; // Import icons
 import './Dashboard.css';
@@ -6,10 +6,23 @@ import './Dashboard.css';
 const Dashboard: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate(); // React Router hook for navigation
-  const { email } = location.state || {}; // Retrieve email from navigation state
+  const [email, setEmail] = useState<string | null>(null); // Manage email state locally
+
+  useEffect(() => {
+    // Retrieve email from location.state or localStorage
+    const emailFromState = location.state?.email;
+    if (emailFromState) {
+      setEmail(emailFromState);
+      localStorage.setItem('email', emailFromState); // Save email to localStorage
+    } else {
+      const emailFromStorage = localStorage.getItem('email');
+      setEmail(emailFromStorage); // Retrieve email from localStorage
+    }
+  }, [location.state]);
 
   const handleLogout = () => {
     // Clear any session or state if needed
+    localStorage.removeItem('email'); // Clear email from localStorage
     navigate('/'); // Redirect to the login page
   };
 

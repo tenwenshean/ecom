@@ -5,7 +5,7 @@ import './Dashboard.css'; // Reuse the same CSS for the sidebar
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const navigate = useNavigate();
-
+  
   const handleLogout = () => {
     // Clear any session or state if needed
     localStorage.removeItem('user'); // Example: Clear user data from localStorage
