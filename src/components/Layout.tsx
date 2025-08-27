@@ -73,7 +73,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         onClick={onClick} 
         style={{ 
           cursor: 'pointer', 
-          backgroundColor: isActive ? '#e0e0e0' : 'transparent',
+          backgroundColor: 'transparent',
           // Add subtle visual feedback for active/hover states
           transition: 'background-color 0.2s ease'
         }}
