@@ -37,7 +37,7 @@
   .login-form button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #646cff;
+    background-color: #2b2727;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -46,7 +46,7 @@
   }
   
   .login-form button:hover {
-    background-color: #535bf2;
+    background-color: #e70e0e;
   }
 
   .message {

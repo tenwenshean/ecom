@@ -62,27 +62,31 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   // Render sidebar menu items with active state
   const renderMenuItem = (
-    icon: React.ReactNode, 
-    path: string, 
-    onClick: () => void
-  ) => {
-    const isActive = location.pathname === path;
-    
-    return (
-      <li 
-        onClick={onClick} 
-        style={{ 
-          cursor: 'pointer', 
-          backgroundColor: 'transparent',
-          // Add subtle visual feedback for active/hover states
-          transition: 'background-color 0.2s ease'
-        }}
-        title={`Go to ${path.substring(1)}`}
-      >
-        {icon}
-      </li>
-    );
-  };
+  icon: React.ReactNode,
+  label: string,
+  path: string,
+  onClick: () => void
+) => {
+  const isActive = location.pathname === path;
+
+  return (
+    <li
+      onClick={onClick}
+      style={{
+        cursor: 'pointer',
+        backgroundColor: 'transparent',
+        transition: 'background-color 0.2s ease',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '16px' // space between icon and text
+      }}
+      title={`Go to ${path.substring(1)}`}
+    >
+      {icon}
+      <span>{label}</span>
+    </li>
+  );
+};
 
   return (
     <div className="dashboard-container">
@@ -90,27 +94,27 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <h2>Menu</h2>
         <ul>
           {renderMenuItem(
-            <FaHome size={24} />, 
+            <FaHome size={40} />, "Home", 
             '/dashboard', 
             goToDashboard
           )}
           {renderMenuItem(
-            <FaUser size={24} />, 
+            <FaUser size={40} />, "Profile",
             '/profile', 
             goToProfile
           )}
           {renderMenuItem(
-            <FaCog size={24} />, 
+            <FaCog size={40} />, "Settings",
             '/settings', 
             goToSettings
           )}
           {renderMenuItem(
-            <FaBox size={24} />, 
+            <FaBox size={40} />, "Products",
             '/products', 
             goToProducts
           )}
           {renderMenuItem(
-            <FaSignOutAlt size={24} />, 
+            <FaSignOutAlt size={40} />, "Logout",
             '/', 
             handleLogout
           )}
@@ -122,11 +126,3 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 };
 
 export default Layout;
-
-// Key Improvements:
-// 1. Prevent navigation to the current path
-// 2. Add a time-based guard against rapid navigations
-// 3. Use 'replace' strategically to manage history stack
-// 4. Memoize navigation functions with useCallback
-// 5. Add active state visualization for menu items
-// 6. Improve accessibility with title attributes

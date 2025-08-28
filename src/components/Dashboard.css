@@ -9,24 +9,29 @@
 }
   
 .sidebar {
-  width: 4%; /* Sidebar width */
-  height: calc(100% - 60px); /* Full height minus the top and bottom margin */
-  margin: 10px 0 20px 10px; /* Add a gap at the bottom (20px) */
-  background-color: #646cff; /* Sidebar background color */
+  width: 15%; /* Sidebar width */
+  box-sizing: border-box;
+  height: 100vh; /* Full height of the viewport */
+  margin: 0; /* Remove all margins */
+  background-color: #2b2727;
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* Align items to the top */
-  border-top-left-radius: 8px; /* Rounded corners on the top-left */
-  border-bottom-left-radius: 8px; /* Rounded corners on the bottom-left */
-  padding: 20px 0; /* Add padding inside the sidebar */
-  overflow-y: auto; /* Enable vertical scrolling */
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px 0 20px 24px;
+  overflow-y: auto;
+  position: fixed; /* Stick to the left */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000; /* Ensure it stays above other content */
 }
   
   .sidebar h2 {
-    margin-bottom: 20px;
-    font-size: 1.2em;
+    align-self : center;
+    margin-bottom: 50px;
+    font-size: 2.0em;
   }
   
   .sidebar ul {
@@ -35,14 +40,14 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Add spacing between icons */
+    gap: 50px; /* Add spacing between icons */
   }
   
   .sidebar ul li {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5em;
+    font-size: 2.0em;
     cursor: pointer;
   }
   
